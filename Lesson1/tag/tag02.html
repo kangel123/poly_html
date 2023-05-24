@@ -1,0 +1,54 @@
+<!DOCTYPE html>	<!--형식상 사용-->
+<META HTTP-EQUIV="content-type" CONTENT="text/html; CHARSET=utf-8">	<!--한글 인코딩-->
+<html>	<!--HTML의 시작-->
+	<head>	<!--머리말 시작-->
+    <!--table:넓이 100%, 전체 테두리 검은색 선-->
+    <!--thead:회색-->
+    <!--th:테두리 검은색 선-->
+    <!--td:테두리 검은색 선, 셀 안의 높이 공간 2rem-->
+    <style>
+        table{
+            width:100%;
+            border: 1px solid black;    
+            border-collapse: collapse;
+        }
+        thead{
+            background: gray;
+        }
+        th,td{
+            border:1px solid black
+        }
+        td{
+            line-height: 2rem;
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문에 해당하는 부분 시작-->
+    <table> <!--테이블 생성-->
+        <thead> <!--머리글 시작-->
+            <tr>    <!--1행-->
+                <th>형식</th>   <!--1열-->
+                <th>구성</th>   <!--2열-->
+                <th>내용</th>   <!--3열-->
+            </tr>   <!--1행 종료-->
+        </thead>    <!--머리글 종료-->
+        <tbody>    <!--본문글 시작-->
+            <tr>    <!--2행-->
+                <td align="center">&lt;P&gt;</td>   <!--1열-->
+                <td>&lt;P&gt;</td>  <!--2열-->
+                <td>문단을 바꾸는 태그입니다. 줄바꿈과 동시에 줄을 띤 것같은 효과가 나타납니다.</td>    <!--3열-->          
+            </tr>   <!--2행 종료-->              
+            <tr>    <!--3행-->
+                <td align="center">&lt;BR&gt;</td>  <!--1열-->
+                <td>&lt;BR&gt;</td> <!--2열-->
+                <td>문단을 바꾸는 태그입니다. 줄 바꿈의 역할만을 수행합니다.</td>   <!--3열-->                
+            </tr>   <!--3행 종료-->  
+            <tr>    <!--4행-->
+                <td align="center">&lt;PRE&gt;</td> <!--1열-->
+                <td>&lt;PRE&gt;...&lt;/PRE&gt;</td> <!--2열-->
+                <td>여백이나 줄 간격 등을 고정시켜 주는 역할을 합니다.</td> <!--3열-->               
+            </tr>   <!--4행 종료--> 
+        </tbody>   <!--본문글 종료-->
+    </table>    <!--테이블 종료-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

@@ -1,0 +1,11 @@
+/*num4.html, num5.html의 css 속성*/
+body{
+    background-color: linen; /*body내 배경색*/
+    color:blueviolet;   /*body내 글씨 색*/
+    margin-left : 30px; /*왼쪽 마진 30px*/
+    margin-right: 30px; /*오른쪽 마진 30px*/
+}
+h3{
+    text-align: center; /*가운데 정렬*/
+    color : darkred;    /*h3의 색깔*/
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+
+<SCRIPT src='https://rawgit.com/FVANCOP/ChartNew.js/master/ChartNew.js'></script>   <!--해당 홈페이지의 자바 스크립트 불러옴-->
+
+<SCRIPT>    // 해당 파일에서 쓸 자바 스크립트 내용
+
+defCanvasWidth=1200;    // 그래프 넓이
+defCanvasHeight=600;    // 그래프 높이
+
+student_name = new Array(); // x축:이름
+student_kor_grade = new Array();    // 국어
+student_eng_grade = new Array();    // 영어
+student_mat_grade = new Array();    // 수학
+for(i = 1; i <= 20; i++){   // 20명에 대하여
+    student_name.push("홍길동"+('00' + i).slice(-2));   // 이름 배열에 추가
+    student_kor_grade.push(Math.floor(Math.random()*101));  // 랜덤 성적 배열에 추가
+    student_eng_grade.push(Math.floor(Math.random()*101));  // 랜덤 성적 배열에 추가
+    student_mat_grade.push(Math.floor(Math.random()*101));  // 랜덤 성적 배열에 추가
+}
+
+//학생 데이터의 json형식
+var student = {
+    labels : student_name,  // 이름 데이터
+    datasets : [    //데이타 정보들
+    {   // 국어
+         fillColor : "red",     // 색깔
+         strokeColor : "rgba(220,220,220,1)",   // 획 색깔
+         data : student_kor_grade,  // 국어 성적 데이터
+         axis : 1,  // 중심선
+    },  
+    {   // 영어
+         fillColor : "yellow",  // 색깔
+         strokeColor : "rgba(220,220,220,1)",   // 획 색깔
+         data : student_eng_grade,  // 영어 성적 데이터
+         axis : 1,  // 중심선
+    },  
+    {   // 수학
+         fillColor : "blue",    // 색깔
+         strokeColor : "rgba(220,220,220,1)",   // 획 색깔
+         data : student_mat_grade,  // 수학 성적 데이터
+         axis : 1,  // 중심선
+    },
+    ]
+}               
+
+student_shapesInChart=[];   // 학생 성적 정보 차트 배열 
+
+// 학생 성적 정보들을 차트로 만들기
+for(i=0;i<student.labels.length;i++) {  // 모든 학생들에 대하여
+    student_shapesInChart[student_shapesInChart.length]= {  // 각 차트 배열에 해당 내용으로 만들기
+              position : "INCHART", // 위치 : 인차트
+              shape: "RECTANGLE",   // 모양 : 직사각형
+              fillColor: fillColorList1[i], // 채우기 색깔
+              strokeColor : strokeColorList1[i],    // 획 색깔
+              animate : false,  // 애니메이트
+              x1: -0.5+i+decal, // x축 최소값
+              y1: -Number.MAX_VALUE,    // y축 최소값
+              x2: 0.50+i-decal, // x축 최대값
+              y2: Number.MAX_VALUE  // y축 최소값
+   }
+};
+
+// 그래프에 표현에 대한 정보
+var opt1 = {    
+      canvasBorders : true, // 테두리
+      graphTitle : "bar",   // 그래프 타이틀
+      legend : true,    // 범례
+      inGraphDataShow : true,   // 그래프 데이터 표시
+      annotateDisplay : true,   // 주석 표시
+      graphTitleFontSize: 18,   // 타이틀 사이즈
+}
+
+</SCRIPT>
+
+<html>  <!--html 시작-->
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />  <!--인코딩 정보-->
+   <head>   <!--헤더 시작-->
+      <title>학생 성적 정보</title> <!--제목-->
+   </head>  <!--헤더 끝-->
+   <body>   <!--본문 시작-->
+   
+    <center>    <!--가운데 정렬-->
+    <FONT SIZE=6><B>학생 성적 정보</B></FONT><BR>   <!--body 내 제목-->
+    <!--자바 스크립트 사용-->
+    <script>
+    document.write("<canvas id=\"canvas_Bar1\" height=\""+defCanvasHeight+"\" width=\""+defCanvasWidth+"\"></canvas>"); // canvas 태그 : 그래프 그리는 용도
+    window.onload = function() {    // load가 완료되면
+        var myBar1 = new Chart(document.getElementById("canvas_Bar1").getContext("2d")).Bar(student,opt1);  // Bar : 막대그래프를 만든다
+    }
+    </script>
+    </center>
+    </body> <!--본문 끝-->
+</html> <!--html 끝-->
+  

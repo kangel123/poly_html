@@ -1,0 +1,2 @@
+/*num8_1.html의 css 속성, 태그 이름이 셀럭터로 사용되는 유형*/
+h3, li{color :brown;}   /*h3과 li의 태그는 갈색*/

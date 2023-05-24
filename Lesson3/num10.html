@@ -1,0 +1,42 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>배열</title>	<!--제목-->
+
+</head>	<!--머리말 끝-->
+<!--자바스크립트 사용-->
+<script>
+    var arr = new Array("빨간색", 1010, "deadfire", "Javascript", "XX");    // 배열
+
+    // 원본
+    document.write("<H2>Original</H2>");    // 메시지
+    for(let i=0; i< arr.length;i++){    // 모든 배열 내 원소에 대하여
+        document.write("arr["+i+"] : "+ arr[i] +"<BR>");    // 배열 인덱스번호와 내용 출력
+    }
+
+    // 기본정렬
+    arr.sort(); // 정렬됨
+    document.write("<HR><H2>기본정렬</H2>") // 메시지
+    for(let i=0; i< arr.length;i++){    // 모든 배열 내 원소에 대하여
+        document.write("arr["+i+"] : "+ arr[i] +"<BR>");    // 배열 인덱스번호와 내용 출력
+    }
+
+    // 역순정렬
+    function compare(a,b){  // 비교하여 역순정렬되도록하는 함수
+        if(a<b) return 1;   // a보다 b가 크면 1
+        else if(a>b) return -1; // b보다 a가 크면 -1
+        else return 0;  // 같으면 0
+    }
+
+    arr.sort(compare);  // 역순정렬 됨image.png
+    document.write("<HR><H2>역순정렬</H2>") // 메시지
+    for(let i=0; i< arr.length;i++){    // 모든 배열 내 원소에 대하여
+        document.write("arr["+i+"] : "+ arr[i] +"<BR>");    // 배열 인덱스번호와 내용 출력
+    }
+</script>
+<body>	<!--본문-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

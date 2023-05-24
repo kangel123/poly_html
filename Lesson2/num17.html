@@ -1,0 +1,37 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>절대 배치</title>	<!--제목-->  
+    <!--style 태그-->
+    <style>
+        div{
+            display: inline-block;  /*박스 유형 : inline-block*/
+            position: absolute; /*절대 배치*/
+            border: 1px solid lightgray;    /*테두리 1px 밝은 회색 실선*/
+        }
+        div > p{
+            display: inline-block;  /*박스 유형 : inline-block*/
+            position: absolute; /*절대 배치*/
+            height: 20px;   /*높이 : 20px*/
+            width: 15px;    /*넓이 : 15px*/
+            background: lightgray;  /*배경색 : 밝은 회색*/
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <h3>Merry Christmas!</h3>    <!--body 내 제목-->
+    <hr>    <!--구분 선-->
+    <p>예수님이 탄생하셨습니다</p>  <!--문장 출력-->
+    <div>   <!--스타일 태그에 따라 출력-->
+        <img src="./img/christmastree.png" width="200" height="200" alt="크리스마스 트리">
+        <p style="left:50px; top: 30px;">M</p>  <!--왼쪽에서 50px, 위에서 30px 위치에 20X15짜리 공간-->
+        <p style="left:70px; top: 0px;">E</p>   <!--왼쪽에서 70px, 위에서 0px 위치에 20X15짜리 공간-->
+        <p style="left:80px; top: 60px;">R</p>  <!--왼쪽에서 80px, 위에서 60px 위치에 20X15짜리 공간-->
+        <p style="left:110px; top: 90px;">R</p> <!--왼쪽에서 110px, 위에서 90px 위치에 20X15짜리 공간-->
+        <p style="left:20px; top: 120px;">Y</p> <!--왼쪽에서 20px, 위에서 120px 위치에 20X15짜리 공간-->
+    </div>
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

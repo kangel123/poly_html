@@ -1,0 +1,27 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>고정 배치</title>	<!--제목-->  
+    <!--style 태그-->
+    <style>
+        #fixed{
+            position : fixed;   /*고정 배치*/
+            bottom: 10px;   /*아래에서 10px 떨어짐*/
+            right: 10px;    /*오른쪽에서 10px 떨어짐*/
+            width: 100px;   /*넓이에서 100px*/
+            padding: 5px;   /*패딩은 5px*/
+            background: red;    /*배경색 : 빨강*/
+            color: white;   /*글자색 : 흰색*/
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <h3>Merry Christmas!</h3>    <!--body 내 제목-->
+    <hr>    <!--구분 선-->
+    <img src="./img/christmastree.png" width="200" height="200" alt="크리스마스 트리">
+    <div id="fixed">예수님이 탄생하셨습니다</div>   <!--style태그에 따라 브라우저 하단에 내용 출력-->    
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

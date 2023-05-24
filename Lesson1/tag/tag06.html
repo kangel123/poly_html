@@ -1,0 +1,60 @@
+<!DOCTYPE html>	<!--형식상 사용-->
+<META HTTP-EQUIV="content-type" CONTENT="text/html; CHARSET=utf-8">	<!--한글 인코딩-->
+<html>	<!--HTML의 시작-->
+	<head>	<!--머리말 시작-->
+    <!--table:넓이 100%, 전체 테두리 검은색 선-->
+    <!--thead:회색-->
+    <!--th:테두리 검은색 선-->
+    <!--td:테두리 검은색 선, 셀 안의 높이 공간 2rem-->
+    <style>
+        table{
+            width:100%;
+            border: 1px solid black;    
+            border-collapse: collapse;
+        }
+        thead{
+            background: gray;
+        }
+        th,td{
+            border:1px solid black
+        }
+        td{
+            line-height: 2rem;
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문에 해당하는 부분 시작-->
+    <table> <!--테이블 생성-->
+        <thead> <!--머리글 시작-->
+            <tr>    <!--1행-->
+                <th>형식</th>   <!--1열-->
+                <th>구성</th>   <!--2열-->
+                <th>내용</th>   <!--3열-->
+            </tr>   <!--1행 종료-->
+        </thead>    <!--머리글 종료-->
+        <tbody>    <!--본문글 시작-->
+            <tr>    <!--2행-->
+                <td rowspan="5" align="center">&lt;LI&gt;</td>  <!--1열-->
+                <td>&lt;UL&gt;...&lt;/UL&gt;</td>   <!--2열-->
+                <td>순서가 없는 목록으로 일반적인 나열을 말합니다.</td> <!--3열-->                
+            </tr>   <!--2행 종료-->         
+            <tr>    <!--3행-->
+                <td>&lt;OL&gt;...&lt;/OL&gt;</td>   <!--2열-->
+                <td>순서가 있는 목록으로 위에서부터 번호를 매깁니다.</td>   <!--3열-->                
+            </tr>   <!--3행 종료-->                        
+            <tr>    <!--4행-->
+                <td>&lt;MENU&gt;...&lt;/MENU&gt;</td>   <!--2열-->
+                <td>메뉴 목록으로 그리길지 않은 문장의 열거에 사용합니다.</td>  <!--3열-->                
+            </tr>   <!--4행 종료-->                                  
+            <tr>    <!--5행-->
+                <td>&lt;DIR&gt;...&lt;/DIR&gt;</td> <!--2열-->
+                <td>디렉토리 목록으로 메뉴 목록보다 짧은 문장을 나열합니다.</td>    <!--3열-->                
+            </tr>   <!--5행 종료-->                                 
+            <tr>    <!--6행-->
+                <td>&lt;DL&gt;...&lt;/DL&gt;</td>   <!--2열-->
+                <td>정의 목록 태그입니다. &lt;LI&gt;가 아닌 &lt;DT&gt;와 &lt;DD&gt;를 사용합니다.</td>  <!--3열-->                
+            </tr>   <!--6행 종료-->                         
+        </tbody>   <!--본문글 종료-->
+    </table>    <!--테이블 종료-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

@@ -1,0 +1,29 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>마진, 테두리, 패딩, 콘텐츠</title>	<!--제목-->
+    <!--style 태그-->
+    <style>
+        body{background: ghostwhite;}   /*body 배경색*/
+        span{background: deepskyblue;}      /*span 배경색*/
+        div.box{    /*div의 box클래스의 경우*/
+            background: yellow; /*배경 : 노랑*/
+            border-style: solid;    /*일반적인 라인 테두리*/
+            border-color: peru; /*테두리 색 peru*/
+
+            margin: 40px;   /*마진(여백) 40px*/
+            border-width: 30px; /*테두리 넓이 30px*/
+            padding: 20px;  /*패딩 20px*/
+        }
+    </style>
+     <!--style 태그 끝-->
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <div class="box">   <!--마진, 테두리, 패딩에 속성에 따라 공간 생성-->
+        <span>DIVDIVDIV</span>  <!--콘텐츠 내용 출력, 배경색 : deepskyblue-->
+    </div>  <!--공간 내 내용 끝-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

@@ -1,0 +1,77 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>overflow 프로퍼티</title>	<!--제목-->
+    <!--style 태그-->
+    <style>
+        table {
+            border-collapse: collapse;  /* 테이블의 테두리 간격 제거 */
+        }
+
+        td, th {    
+            text-align: left;   /*글자 왼쪽 정렬*/
+            padding: 5px;   /*패딩 : 5em*/
+            height: 15px;   /*높이 : 15px*/
+            width: 100px;   /*넓이 : 100px*/
+        }
+
+        thead, tfoot {
+            background: darkgray;   /*배경색 : 어두운 회색*/
+            color: yellow;  /*글자색 : 노랑*/
+        }
+
+        tbody tr:nth-child(even) {  /* tbody안에 짝수 자식*/
+            background: aliceblue;  /*배경색 : aliceblue*/
+        }
+
+        tbody tr:hover {    /*tbody의 행에 마우스를 올리면*/
+            background: pink;   /*바탕색 : 핑크*/
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문에 해당하는 부분 시작-->
+    <h3>1학기 성적</h3>    <!--body 내 제목-->
+    <hr>    <!--구분 선-->
+    <table> <!--테이블 생성-->
+        <thead> <!--머리글 시작-->
+            <tr>    <!--행 시작-->
+                <th>이름</th>   <!--1열-->
+                <th>HTML</th>   <!--2열-->
+                <th>CSS</th>   <!--3열-->
+            </tr>   <!--행 종료-->
+        </thead>    <!--머리글 종료-->
+        <tfoot> <!--꼬리글 시작-->
+            <tr>    <!--행 시작-->
+                <th>합</th> <!--1열-->
+                <th>310</th>    <!--2열-->
+                <th>249</th>    <!--3열-->
+            </tr>   <!--행 종료-->
+        </tfoot>    <!--꼬리글 끝-->
+        <tbody>    <!--본문글 시작-->
+            <tr>    <!--1행-->
+                <td>황기태</td> <!--1열-->
+                <td>80</td> <!--2열-->
+                <td>70</td> <!--3열-->                
+            </tr>   <!--1행 종료-->              
+            <tr>    <!--2행-->
+                <td>이재문</td> <!--1열-->
+                <td>95</td> <!--2열-->
+                <td>99</td> <!--3열-->                
+            </tr>   <!--2행 종료-->         
+            <tr>    <!--3행-->
+                <td>이병은</td> <!--1열-->
+                <td>85</td> <!--2열-->
+                <td>90</td> <!--3열-->                
+            </tr>   <!--3행 종료-->         
+            <tr>    <!--4행-->
+                <td>김남윤</td> <!--1열-->
+                <td>50</td> <!--2열-->
+                <td>40</td> <!--3열-->                
+            </tr>   <!--4행 종료-->                     
+        </tbody>   <!--본문글 종료-->
+    </table>    <!--테이블 종료-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

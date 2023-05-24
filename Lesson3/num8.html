@@ -1,0 +1,29 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>날짜</title>	<!--제목-->
+
+</head>	<!--머리말 끝-->
+<!--자바스크립트 사용-->
+<script>
+    var d = new Date(2020,11,31);   // 2020년 11월 31일 날짜 데이터 생성
+    document.write("년도는 : " + d.getFullYear() +  // 년도 출력
+    ", 월은 : " + d.getMonth() +    // 월 출력
+    ", 일은 : " + d.getDate() + // 일 출력
+    ", 요일은 : " + d.getDay() +    // 요일 출력
+    ", 시는 : "+ d.getHours() + // 시 출력
+    ", 분은 : "+ d.getMinutes() +   // 분 출력
+    ", 초는 : "+ d.getSeconds() +   // 초 출력
+    ", 밀리초 : " + d.getMilliseconds() +"<HR>");   // 밀리초 출력 + 구분선
+    d.setFullYear(2010);    // 2010년으로 변경
+    document.write(d+"<HR>");   // 날짜 출력 + 구분선
+    d.setMonth(7);  // 8월로 변경
+    document.write(d+"<HR>");   // 날짜 출력 + 구분선
+</script>
+<body>	<!--본문-->
+
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

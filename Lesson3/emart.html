@@ -1,0 +1,192 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en"> <!--HTML의 시작-->
+
+<head> <!--머리말 시작-->
+	<meta charset="UTF-8"> <!--한글 인코딩-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--문자셋 메타 정보-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--뷰포트 메타 정보-->
+	<title>영수증</title> <!--제목-->
+
+</head> <!--머리말 끝-->
+<style>
+	body {
+		font-family: 'Nanum Gothic', sans-serif;	/*글자 스타일 변경*/
+	}
+	table {
+		width: 330px;	/*넓이 고정*/
+		border-spacing: 0;
+	}
+	td {
+		padding: 0;	/*패딩 간격 0*/
+	}
+	.bill_head, .bill_tail{	/*계산서 위랑 아래 부분*/	
+		width: 330px;	/*넓이 고정*/
+	}
+	.bill{
+		text-align: right;	/*글자 오른쪽 정렬*/
+	}
+
+</style>
+<!--자바스크립트 사용-->
+<script>
+	String.prototype.getStringFromByteLength = function (length) {	// byte수에 따른 글자 맞추기
+		const contents = this;	// 해당 문자열(prototype)을 따로 저장
+		let str_character;	// 한 문자
+		let int_char_count = 0;	// 차지하는 공간
+		let int_contents_length = contents.length;	// 문자열 길이
+
+		let returnValue = '';	// 새롭게 만들 문자열
+
+		for (k = 0; k < int_contents_length; k++) {	// 문자열 길이만큼, 길면 중간에 빠져 나갈 것임
+			str_character = contents.charAt(k);	//한 문자씩 자름
+			if (escape(str_character).length > 4)	//한글이면
+				int_char_count += 2;	// 2칸 차지
+			else	// 그외
+				int_char_count++;	// 1칸 차지
+
+			if (int_char_count > length) {	// 차지하는 공간이 넘어가면
+				break;	// 종료
+			}
+			returnValue += str_character;	// 문자열 추가
+		}
+		return returnValue;	// 새롭게 만들어진 문자열 리턴
+	}
+
+	// 필요한 객체 생성
+	let kopo09_df = new Intl.NumberFormat(); // 숫자 형식 객체 생성
+	let kopo09_current = new Date(); // 현재 시간
+	let kopo09_parking = new Date(); // 주차 시간
+	kopo09_parking.setSeconds(kopo09_parking.getSeconds() - 10000);	// 대략적인 주차 시간 만들기
+	
+	const current_year = kopo09_current.getFullYear();	// 현재 년도
+	const current_month = String(kopo09_current.getMonth() + 1).padStart(2, '0');	// 현재 월
+	const current_day = String(kopo09_current.getDate()).padStart(2, '0');	// 현재 일
+	const current_hour = String(kopo09_current.getHours()).padStart(2, '0');	// 현재 시
+	const current_minute = String(kopo09_current.getMinutes()).padStart(2, '0');	// 현재 분
+	const kopo09_formattedDate1 = `${current_year}-${current_month}-${current_day} ${current_hour}:${current_minute}`;	// 날짜 표현1
+	const kopo09_formattedDate2 = `${current_year}${current_month}${current_day}`;	// 날짜 표현2
+	
+	const parking_year = kopo09_parking.getFullYear();	// 주차 년도
+	const parking_month = String(kopo09_parking.getMonth() + 1).padStart(2, '0');	// 주차 월
+	const parking_day = String(kopo09_parking.getDate()).padStart(2, '0');	// 주차 일
+	const parking_hour = String(kopo09_parking.getHours()).padStart(2, '0');	// 주차 시
+	const parking_minute = String(kopo09_parking.getMinutes()).padStart(2, '0');	// 주차 분
+	const parking_seconds = String(kopo09_parking.getSeconds()).padStart(2, '0');	// 주차 초
+	const kopo09_formattedDate3 = `${parking_year}-${parking_month}-${parking_day} ${parking_hour}:${parking_minute}:${parking_seconds}`;	// 날짜 표현3
+	
+
+	// 상품 정보
+	let kopo09_itemname = new Array("초코파이", "바나나우유", "건포도", "오렌지주스", "초코에몽", "마스크", "식용유1.8L", "컴포트그립가위", "무말랭이 150g",
+		"홈런볼초코", "광어초밥", "철원 오대쌀10kg", "가나 다크밀크", "왕뚜껑 110g", "멸치액젓 500g", "가누다 침대", "가누다 베개", "버섯", "부산어묵",
+		"김밥용 단무지", "가지", "[송월우산]CM 카이만 3단 자동 우산", "국내산 한돈돼지 목살 500g(구이용)", "케라시스 앰플 트리트", "푸르밀 미숫가루우유",
+		"오뚜기 진비빔면 156g", "(달콤)순살닭강정(g)", "CJ 비비고칩 20g", "1+ 등급란 10개입 특", "물티슈 캡형", "포르쉐", "사과"); // 구매 상품명
+	let kopo09_price = new Array(1000, 3600, 3300, 25000, 1000, 3000, 8500, 15900, 3880, 5850, 13584, 31900, 1580, 1110,
+		2700, 3800000, 228000, 2980, 2780, 2180, 6990, 23800, 7120, 6950, 2980, 2750, 7920, 1990, 3480, 16511, 96300000, 5000); // 구매 가격              
+	let kopo09_num = new Array(1, 4, 1, 1, 10, 4, 1, 2, 2, 2, 1, 1, 10, 3, 2, 1, 2, 2, 3, 2, 1, 1, 3, 1, 2, 3, 1, 1, 2,
+		2, 1, 20); // 구매 개수
+	let kopo09_taxfree = new Array(true, true, false, true, true, false, false, false, true, false, false, true,
+		false, false, true, false, false, true, false, true, true, false, false, false, false, false, false,
+		false, true, false, false, true); // 면세 유무
+
+	// 연산에 필요한 변수 선언
+	let kopo09_point = 5637;	// 소비자 기존 포인트
+	let kopo09_rate = 0.1; // 세액 10%
+	let kopo09_xtax = 0; // 세금x 물품 총액
+	let kopo09_otax = 0; // 세금o 물품 총액
+	let kopo09_amount = 0; // 각 물건의 총 금액
+	let kopo09_totalAmount = 0; // 모든 구매 물품 총액
+	let kopo09_count = 0;	// 총 품목 수량 
+
+	// 영수증 출력 시작
+	document.write("<Table>");	// 테이블 작성
+	document.write("<tr><td rowspan='3'><img src = 'emart.jpg' width='100px'></td>")	// 행 합침, 1행 1열, 로고
+	document.write("<td><font size=2>이마트 죽전점(031)888-1234</font></td></tr>")	// 1행 2열
+	document.write("<tr><td><font size=2>206-86-50913 강희석</font></td></tr>")	// 2행 2열
+	document.write("<tr><td><font size=2>용인 수지구 포은대로 552</font></td></tr>")	// 3행 2열
+	document.write("</Table>");	// 테이블 끝
+
+	document.write("<div class='bill_head'>");	// 계산서 윗부분
+	document.write("영수증 미지참시 교환/환불 불가<BR>"); // 교환/환불 정보
+	document.write("정상상품에 한함, 30일 이내(신선 7일)<BR>");	// 교환/환불 정보
+	document.write("※일부 브랜드매장 제외(매장 고지물참조)<BR>");	// 교환/환불 정보
+	document.write("교환/환불 구매점에서 가능(결제카드 지참)<BR><BR>");	// 교환/환불 정보
+	document.write("[구 매]" + kopo09_formattedDate1);	// 구매 시간
+	document.write("&nbsp;".repeat(7)+"POS:0011-9861<BR>"); // 구매 시간
+	document.write("<hr></div>");	// 구분선
+	document.write("<Table>");	// 계산서 테이블 작성
+	document.write("<tr><th></th>");	// 속성을 나타내는 행
+	document.write("<th>상 품 명</th>");	// 상품명
+	document.write("<th>단 가</th>");	// 단가
+	document.write("<th>수 량</th>");	// 수량
+	document.write("<th>금 액</th>");	// 금액
+	document.write("</tr>");	// 해당 행 종료
+	for (; kopo09_count < kopo09_itemname.length; kopo09_count++) { // 모든 구매 항목에 대해 반복
+		let kopo09_newText = ""; // 상품명 변경용(상품명의 빈칸을 채우거나 자르기)
+		kopo09_amount = kopo09_price[kopo09_count] * kopo09_num[kopo09_count]; // 각 물품의 총액을 따로 저장
+		kopo09_totalAmount += kopo09_amount; // 총액에 추가
+
+		if (kopo09_count % 5 == 0) { // 물품 5개 마다 구분(자르기)
+			document.write("<tr><td colspan='5'><hr></td></tr>");	// 선긋기로 나눔
+		}
+
+		if (kopo09_taxfree[kopo09_count]) { // 세금x 물품에 대해			
+			document.write("<tr><td>"+('00' + (kopo09_count+1)).slice(-2)+"*</td>");	// 물품 순서 및 세금 표시
+			kopo09_xtax += kopo09_amount; // 해당 물품의 총액을 세금x 모든 물품의 총액에 추가
+		} else { // 세금o 물품에 대해
+			document.write("<tr><td>"+('00' + (kopo09_count+1)).slice(-2)+"</td>");	// 물품 순서 및 세금 표시
+			kopo09_otax += kopo09_amount; // 해당 물품의 총액을 세금o 모든 물품의 총액에 추가
+		}
+
+		document.write("<td>" + kopo09_itemname[kopo09_count].getStringFromByteLength(13) + "</td>");	// 상품명
+		document.write("<td class='bill'>" + kopo09_df.format(kopo09_price[kopo09_count]) + "</td>");	// 단가
+		document.write("<td class='bill'>" + kopo09_df.format(kopo09_num[kopo09_count]) + "</td>");	// 수량
+		document.write("<td class='bill'>" + kopo09_df.format(kopo09_amount) + "</td></tr>");	// 금액
+	}
+	document.write("</table>");	// 계산서 종료
+	
+	let kopo09_taxex = kopo09_otax / (1 + kopo09_rate);	// 과세물품중 부가세 제외한 가격
+	let kopo09_vat = kopo09_otax - kopo09_taxex; // 부가세
+
+	document.write("<br>");		// 한 줄 띄우기
+	document.write("<table>");		// 총합 테이블 생성
+	document.write("<tr><td>"+"&nbsp;".repeat(19)+"총 품목 수량</td>");	// 총 품목 수량
+	document.write("<td class='bill'>"+kopo09_count+"</td></tr>");	// 총 품목 수량
+	document.write("<tr><td>"+"&nbsp;".repeat(16)+"(*)면 세 &nbsp; 물 품</td>");	// 총 면세물품
+	document.write("<td class='bill'>"+kopo09_df.format(kopo09_taxex)+"</td></tr>");	// 총 면세물품
+	document.write("<tr><td> "+"&nbsp;".repeat(19)+"과 세 &nbsp; 물 품</td>");	// 총 과세물품
+	document.write("<td class='bill'>"+kopo09_df.format(kopo09_taxex)+"</td></tr>");	// 총 과세물품
+	document.write("<tr><td> "+"&nbsp;".repeat(19)+"부 &nbsp;&nbsp; 가 &nbsp;&nbsp; 세</td>");	// 총 부가세
+	document.write("<td class='bill'>"+kopo09_df.format(kopo09_vat)+"</td></tr>");	// 총 부가세
+	document.write("<tr><td>"+"&nbsp;".repeat(19)+"합"+"&nbsp;".repeat(11)+"계</td>");	// 총 합계
+	document.write("<td class='bill'>"+kopo09_df.format(kopo09_totalAmount)+"</td></tr>");	// 총 합계
+	document.write("<tr><td> 결 제 대 상 금 액</td>");	// 결제대상금액
+	document.write("<td class='bill'>"+kopo09_df.format(kopo09_totalAmount)+"</td></tr>");	// 결제대상금액
+	document.write("</table>");		// 총합 테이블 종료
+	document.write("<div class='bill_tail'>")	// 계산서 아래부분
+	document.write("<hr>");	// 구분선
+	document.write("0012 KEB 하나" + "&nbsp;".repeat(19 - "0012 KEB 하나".length) + "541707**0484/35860658" + "<br>"); // 결제 내역
+	document.write("카드결제(IC)" + "&nbsp;".repeat(23 - "카드결제(IC)".length) + "일시불 / " + kopo09_df.format(kopo09_totalAmount) + "<br>");	// 결제 정보
+	document.write("<hr>");	// 구분선
+	document.write("&nbsp;".repeat(15)+"[신세계포인트 적립]" + "<br>"); // 소비자 포인트 정보
+	document.write("홍*두 고객님의 포인트 현황입니다." + "<br>");	// 포인트 현황
+	document.write("금회발생포인트" + "&nbsp;".repeat(12 - "금회발생포인트".length) + "9350**9995" + "&nbsp;".repeat(3) + kopo09_df.format(kopo09_totalAmount / 1000) + "<br>"); // 이번 포인트
+	document.write("누계(가용)포인트" + "&nbsp;".repeat(22 - "누계(가용)포인트".length) + kopo09_df.format(kopo09_point + kopo09_totalAmount / 1000) + 
+									"(" + kopo09_df.format(kopo09_point) + ")" + "<br>"); // 누적 포인트
+	document.write("*신세계포인트 유효기간은 2년입니다." + "<br>");	// 포인트 기간
+	document.write("<hr>");	// 구분선
+	document.write("&nbsp;".repeat(4)+"구매금액기준 무료주차시간 자동부여" + "<br>"); // 소비자 차량 정보
+	document.write("차량번호 : " + "&nbsp;".repeat(40 - "차량번호 : ".length) + "34저****" + "<br>");	// 차량번호
+	document.write("입차시간 : " + "&nbsp;".repeat(25 - "입차시간 : ".length) + kopo09_formattedDate3 + "<br>");	// 입차시간
+	document.write("<hr>");	// 구분선
+	document.write("캐셔:084599 양00" + "&nbsp;".repeat(40 - "캐셔:084599 양00".length) + "1150" + "<br>"); // 캐셔(마트에서 물건 계산해 주시는 분) 정보
+	document.write("&nbsp;".repeat(15)+"||||||| | |||| || || || ||| |||||" + "<br>");	// 간이 바코드
+	document.write("&nbsp;".repeat(15)+"||||||| | |||| || || || ||| |||||" + "<br>");	// 간이 바코드
+	document.write("&nbsp;".repeat(7)+kopo09_formattedDate2+ "/00119861/00164980/31" + "<br>");	// 위에 만든 날짜데이터 사용
+	document.write("</div>");	// 계산서 아래부분 종료
+</script>
+
+<body> <!--본문-->
+
+</body> <!--본문 끝-->
+
+</html> <!--HTML의 끝-->

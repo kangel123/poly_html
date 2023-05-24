@@ -1,0 +1,18 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>객체-navigator</title>	<!--제목-->
+
+</head>	<!--머리말 끝-->
+<!--자바스크립트 사용-->
+<script>    
+    for(obj in navigator){  // navigator:브라우저명과 버전 정보, 해당 배열의 원소들에 대하여
+        document.write(obj + " : "+ navigator[obj] +"<BR>");    // 각각 어떤 정보인지 출력
+    }
+</script>
+<body>	<!--본문-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

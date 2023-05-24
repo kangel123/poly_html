@@ -1,0 +1,28 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>이벤트의 디폴트 행동 취소</title>	<!--제목-->    
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <h3>이벤트의 디폴트 행동 취소</h3>    <!--body 내 제목-->
+    <hr>    <!--구분선-->
+    <a href="https://www.naver.com/" onclick="return query()">네이버로 이동할 지 물어보는 링크</a>  <!--링크 걸기, 확인창 추가-->
+    <hr>    <!--구분선-->
+    <form>  <!--정보를 보내는 태그-->
+        <input type="checkbox">빵(체크 됨)<br>  <!--체크박스 체크 변경 가능-->
+        <input type="checkbox" onclick="noAction(event)">술(체크 안됨)  <!--체크박스 체크 변경 불가-->
+    </form>
+    <script>
+        function query(){   // query함수 정의
+            var ret = confirm("네이버로 이동하시겠습니까?");    // 메시지 출력 및 선택에 따라 true,false
+            return ret; // treu 또는 false 리턴
+        }
+        function noAction(e){   // noAction함수 정의
+            e.preventDefault(); // 이벤트의 디폴트 행동 강제취소
+        }
+    </script>
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

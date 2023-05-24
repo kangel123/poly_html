@@ -1,0 +1,107 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>성적 1페이지만 출력</title>	<!--제목-->
+    <script src="./student.js"></script>    <!--자바스크립트 파일 가져옴-->
+    <style>
+        dir{
+            width: 600px;   /*넓이*/
+        }
+        #title{
+            text-align: center; /*제목은 중앙*/
+        }
+        .date{
+            text-align: right;  /*날짜는 오른쪽*/
+        }
+        table{
+            width: 600px;   /*넓이*/
+            text-align: left;   /*테이블 내 텍스트는 왼쪽 정렬*/
+        }
+        .top{            
+            border-top: 2px dashed black;   /*위에 점선으로 구분선 만들기*/
+        }
+        .bottom{            
+            border-bottom: 2px dashed black;    /*아라에 점선으로 구분선 만들기*/
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <script>
+        let kortotal = 0;   // 국어 총합
+        let engtotal = 0;   // 영어 총합
+        let mattotal = 0;   // 수학 총합
+        let sumtotal = 0;   // 합계 총합
+        let avgtotal = 0;   // 평균 총합
+
+        const arr = []; // 배열 생성
+        for(i = 1; i <= 30; i++){   // 30명에 대하여                         
+            arr.push(new student(i,"홍길동"+('00' + i).slice(-2) , Math.floor(Math.random()*101),Math.floor(Math.random()*101),Math.floor(Math.random()*101)))   // 내용 생성해서 넣기         
+        }
+
+        let date = new Date(); // 현재 날짜 받아오기
+        const year = date.getFullYear();	// 현재 년도
+	    const month = String(date.getMonth() + 1).padStart(2, '0');	// 현재 월
+	    const day = String(date.getDate()).padStart(2, '0');	// 현재 일
+	    const hour = String(date.getHours()).padStart(2, '0');	// 현재 시
+	    const minute = String(date.getMinutes()).padStart(2, '0');	// 현재 분
+	    const seconds = String(date.getSeconds()).padStart(2, '0');	// 현재 초
+	    const formattedDate = `${year}.${month}.${day} ${hour}:${minute}:${seconds}`;	// 날짜 표멧
+                
+        document.write("<dir>")
+        document.write("<dir id='title'><b>성적 집계표</b></dir>");  // 제목 중앙정렬
+        document.write("<table>") // 테이블 시작
+        document.write("<thead>")   // 머리글 시작
+        document.write("<tr><td class='bottom date' colspan='7'>출력일자 : "+ formattedDate +"</td></tr>"); // 출력 일자 + 2줄 만들기 위한 행
+        document.write("<tr><th class='top date' colspan='7'></th>")    // 2줄 만들기 위한 행
+        document.write("<tr><th width='100px'>번호</th>") // 번호
+        document.write("<th width='200px'>이름</th>") // 이름
+        document.write("<th width='100px'>국어</th>") // 국어
+        document.write("<th width='100px'>영어</th>") // 영어
+        document.write("<th width='100px'>수학</th>") // 수학
+        document.write("<th width='100px'>총점</th>") // 총점
+        document.write("<th width='100px'>평균</th></tr>")    // 평균
+        document.write("<tr><td class='bottom' colspan='7'></td></tr>");   // 2줄 만들기 위한 행
+        document.write("<tr><td class='top' colspan='7'></td></tr>");   // 2줄 만들기 위한 행      
+        document.write("</thead>")  // 머리글 종료
+
+        document.write("<tbody>")   // 본문글 시작
+        for(let student of arr){
+            kortotal += student.kor;    // 국어 총합 추가
+            engtotal += student.eng;    // 영어 총합 추가
+            mattotal += student.mat;    // 수학 총합 추가
+            sumtotal += student.sum;    // 합계 총합 추가
+            avgtotal += student.avg;    // 평균 총합 추가
+            document.write("<tr><td width='100px' >"+student.id+"</td>")    // 학번
+            document.write("<td width='200px'>"+student.name+"</td>")  // 이름
+            document.write("<td width='100px'>"+student.kor+"</td>")   // 국어
+            document.write("<td width='100px'>"+student.eng+"</td>")   // 영어
+            document.write("<td width='100px'>"+student.mat+"</td>")   // 수학
+            document.write("<td width='100px'>"+student.sum+"</td>")   // 합계
+            document.write("<td width='100px'>"+student.avg+"</td></tr>")      // 평균                     
+        }
+        document.write("</tbody>")  // 본문글 종료
+        document.write("<tfoot>")   // 바닥글 시작         
+        document.write("<tr><td class='bottom' colspan='7'></td></tr>");   // 2줄 만들기 위한 행
+        document.write("<tr><td class='top' colspan='7'></td></tr>");   // 2줄 만들기 위한 행        
+        document.write("<tr><th width='300px' colspan='2'>합계</th>")   // 총합
+        document.write("<th  width='100px'>"+kortotal+"</th>")   // 국어 총합
+        document.write("<th width='100px'>"+engtotal+"</th>")   // 영어 총합
+        document.write("<th width='100px'>"+mattotal+"</th>")   // 수학 총합
+        document.write("<th width='100px'>"+sumtotal+"</th>")   // 합계 총합
+        document.write("<th width='100px'>"+avgtotal+"</th></tr>")  // 평균 총합
+        document.write("<tr><th width='400px' colspan='2'>평균</td>")   // 평균
+        document.write("<th width='100px'>"+Math.floor(kortotal/30)+"</th>")    // 국어 총합
+        document.write("<th width='100px'>"+Math.floor(engtotal/30)+"</th>")    // 영어 총합
+        document.write("<th width='100px'>"+Math.floor(mattotal/30)+"</th>")    // 수학 총합
+        document.write("<th width='100px'>"+Math.floor(sumtotal/30)+"</th>")    // 합계 총합
+        document.write("<th width='100px'>"+Math.floor(avgtotal/30)+"</th></tr>")   // 평균 총합  
+        document.write("</tfoot>")  // 바닥글 종료        
+    </script>
+    
+
+    
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

@@ -1,0 +1,3 @@
+/*num8_2.html의 css 속성, class로 사용되는 유형*/
+.warning{color:red;}    /*warning 클래스 사용 시 빨간색*/
+body.main{background: aliceblue;} /*body태그에 main클래스 사용 시, 배경은 aliceblue*/

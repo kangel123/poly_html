@@ -1,0 +1,29 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>프로퍼티</title>	<!--제목-->
+    <!--style 태그-->
+    <style>
+        div{
+            border : 2px solid yellowgreen; /*테두리 2px yellowgreen 실선*/
+            color: blue;    /*글자색 : 파랑*/
+            background: aliceblue;  /*배경색 : aliceblue */
+        }
+        span{
+            border : 3px dotted red;    /*테두리 : 3px 빨간색 점선*/
+            background: yellow; /*배경색 : 노랑*/
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <h3>인라인, 인라인 블록, 블록</h3>    <!--body 내 제목-->
+    <hr>    <!--구분 선-->
+    나는 <div style = "display: none;">div(none)</div>입니다.<br><br>   <!--none속성은 해당 텍스트가 보이지 않음-->
+    나는 <div style = "display: inline;">div(inline)</div>입니다.<br><br>   <!--inline속성을 가짐-->
+    나는 <div style = "display: inline-block;">div(inline-block)</div>입니다.<br><br>   <!--inline과 block속성을 둘다 가짐-->
+    나는 <div>div<span style = "display: block;">div(block)</span>입니다.</div> <!--block속성을 가짐-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

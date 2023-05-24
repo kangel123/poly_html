@@ -1,0 +1,58 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>overflow 프로퍼티</title>	<!--제목-->
+    <!--style 태그-->
+    <style>
+        input[type=text] {  /* 인풋 태그의 타입이 text인 경우*/
+            color: red; /*글자색 : 빨간색*/
+        }
+
+        input:hover, textarea:hover {   /*인풋 태그와 텍스트에리어 태그에 마우스를 올리면*/
+            background: aliceblue;  /*배경색 : aliceblue*/
+        }
+
+        input[type=text]:focus,input[type=email]:focus {    /*인풋 태그의 타입이 text이거나 email이면*/
+            font-size: 120%;    /*글자 크기 : 120%*/
+        }
+
+        label {
+            display: block; /*박스 모형 : block*/
+            padding: 10px;  /*패딩 : 10px*/
+        }
+
+        label span {    /*자손 셀렉터*/
+            float: left;    /*브라우저 왼쪽으로*/
+            width: 90px;    /*넓이 90px*/
+            text-align: right;  /*글씨는 오른쪽 정렬*/
+            padding: 10px   /*패딩 10px*/
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <h3>CONTACT US</h3>    <!--body 내 제목-->
+    <hr>    <!--구분 선-->
+    <form>  <!--폼 시작-->
+        <label> <!--1번째 lable-->
+            <span>Name</span>   <!--attribute 1-->
+            <input type="text" placeholder="Elvis"><br> <!--text입력 칸 생성, style 태그의 속성 내용에 따름-->
+        </label>    <!--1번째 lable 종료-->
+
+        <label> <!--2번째 lable-->
+            <span>Email</span>  <!--attribute 2-->
+            <input type="email" placeholder="Elvis@gmail.com"><br>  <!--email입력 칸 생성, style 태그의 속성 내용에 따름-->
+        </label>    <!--2번째 lable 종료-->
+
+        <label> <!--3번째 lable-->
+            <span>Comment</span>    <!--attribute 3-->
+            <textarea placeholder="메시지를 남겨주세요."></textarea>    <!--textarea 생성, style 태그의 속성 내용에 따름-->
+        </label>    <!--3번째 lable 종료-->
+        <label> <!--4번째 lable-->
+            <input type="submit" placeholder="submit"><br>  <!--submit 버튼 생성-->
+        </label>    <!--4번째 lable 종료-->
+    </form> <!--폼 종료-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

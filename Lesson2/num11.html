@@ -1,0 +1,29 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>폰트</title>	<!--제목-->
+    <!--style 태그-->
+    <style>
+        body{
+            font-family: "Times New Roman",serif;   /*font-family: 폰트, 폰트가 없는 경우, 유사한 serif형 중에서 선택*/
+            font-size: large;   /*폰트 크기 : 큰 크기*/
+        }
+        h3{
+            font: italic bold 40px consolas, sans-serif;    /*이탤릭 스타일에 굵기 700, 크기 40px의 consolas체*/
+        }
+    </style>
+     <!--style 태그 끝-->
+</head>	<!--머리말 끝-->
+<body>	<!--본문, "Times New Roman" 폰트에 큰 크기-->
+    <h3>Concolas font</h3>   <!--body내 제목, 이탤릭 스타일에 굵기 700, 크기 40px의 consolas체-->
+    <hr>    <!--구분 선-->
+    <p style="font-weight: 900;">font-weight 900</p>    <!--폰트 굵기 : 900-->
+    <p style="font-weight: 100;">font-weight 100</p>    <!--폰트 굵기 : 100-->
+    <p style="font-style: italic;">Italic Style</p> <!--폰트 스타일 : 이탤릭체-->
+    <p style="font-style: oblique;">Oblique Style</p>   <!--폰트 스타일 : 기울어짐꼴-->
+    <p>현재 크기의 <span style="font-size: 1.5em;">1.5배</span> 크기로</p>  <!--span 내의 내용 : 1.5배의 폰트 크기-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

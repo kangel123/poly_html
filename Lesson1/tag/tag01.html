@@ -1,0 +1,69 @@
+<!DOCTYPE html>	<!--형식상 사용-->
+<META HTTP-EQUIV="content-type" CONTENT="text/html; CHARSET=utf-8">	<!--한글 인코딩-->
+<html>	<!--HTML의 시작-->
+	<head>	<!--머리말 시작-->
+    <!--table:넓이 100%, 전체 테두리 검은색 선-->
+    <!--thead:회색-->
+    <!--th:테두리 검은색 선-->
+    <!--td:테두리 검은색 선, 셀 안의 높이 공간 2rem-->
+    <style>
+        table{
+            width:100%;
+            border: 1px solid black;    
+            border-collapse: collapse;
+        }
+        thead{
+            background: gray;
+        }
+        th,td{
+            border:1px solid black
+        }
+        td{
+            line-height: 2rem;
+        }
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문에 해당하는 부분 시작-->
+    <table> <!--테이블 생성-->
+        <thead> <!--머리글 시작-->
+            <tr>    <!--1행-->
+                <th>형식</th>   <!--1열-->
+                <th>구성</th>   <!--2열-->
+                <th>내용</th>   <!--3열-->
+            </tr>   <!--1행 종료-->
+        </thead>    <!--머리글 종료-->
+        <tbody>    <!--본문글 시작-->
+            <tr>    <!--2행-->
+                <td align="center">&lt;HTML&gt;</td>    <!--1열-->
+                <td>&lt;HTML&gt;...&lt;/HTML&gt;</td>   <!--2열-->
+                <td>HTML 언어로 작성되어 있다는 것을 알려줍니다.</td>   <!--3열-->               
+            </tr>   <!--2행 종료-->             
+            <tr>    <!--3행-->
+                <td align="center">&lt;HEAD&gt;</td>    <!--1열-->
+                <td>&lt;HEAD&gt;...&lt;/HEAD&gt;</td>   <!--2열-->
+                <td>Heading의 준말로 글의 머리말에 해당합니다.</td> <!--3열-->               
+            </tr>   <!--3행 종료--> 
+            <tr>    <!--4행-->
+                <td align="center">&lt;BODY&gt;</td>    <!--1열-->
+                <td>&lt;BODY&gt;...&lt;/BODY&gt;</td>   <!--2열-->
+                <td>본문에 해당하는 부분을 알려줍니다.</td> <!--3열-->               
+            </tr>   <!--4행 종료-->  
+            <tr>    <!--5행-->
+                <td align="center">&lt;TITLE&gt;</td>   <!--1열-->
+                <td>&lt;TITLE&gt;...&lt;/TITLE&gt;</td> <!--2열-->
+                <td>타이틀바에 새겨질 글자를 정의합니다.</td>   <!--3열-->                
+            </tr>   <!--5행 종료-->
+            <tr>    <!--6행-->
+                <td align="center">&lt;TITLE&gt;</td>   <!--1열-->
+                <td>&lt;TITLE&gt;...&lt;/TITLE&gt;</td>   <!--2열-->
+                <td>표제 부분에 들어갈 말을 정의하빈다. 1~6까지의 숫자를 사용하고 숫자가 커질수록 표제는 작아집니다. 기본값은  H4입니다.</td>   <!--3열-->            
+            </tr>   <!--6행 종료-->
+            <tr>    <!--7행-->
+                <td align="center">&lt;!--...--&gt;</td>    <!--1열-->
+                <td>&lt;!--주석 내용--&gt;</td> <!--2열-->
+                <td>주석을 달거나 잠시동안 이미지를 보이지 않게 할 때 사용합니다.</td>  <!--3열-->                
+            </tr>   <!--7행 종료-->
+        </tbody>   <!--본문글 종료-->
+    </table>    <!--테이블 종료-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

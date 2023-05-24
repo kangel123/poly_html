@@ -1,0 +1,19 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>스타일 합치기 및 오버라이딩</title>	<!--제목-->
+    <style>
+        p{color:blue;font-size:12px;}   /*12px 크기의 파란색 글자*/
+    </style>
+</head>	<!--머리말 끝-->
+<body>	<!--본문에 해당하는 부분 시작-->
+    <h3>p 태그에 중첩된 스타일</h3> <!--body내 제목-->
+    <hr>    <!--구분 선-->
+    <p>Hello, students!</p> <!-- style 태그에 따라 12px 크기의 파란색 글자, css파일에 따라 바탕색 mistyrose-->
+    <p style="font-size: 25px;"> 안녕하세요 교수님! </p>    <!--style 태그의 글자 크기보다 style 속성의 글자 크기가 우선순위이다-->
+                                    <!--style 속성에 따라 25px, style 태그에 따라 파란색 글씨, css파일에 따라 바탕색 mistyrose-->
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

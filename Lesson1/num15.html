@@ -1,0 +1,48 @@
+<!DOCTYPE html>	<!--형식상 사용-->
+<META HTTP-EQUIV="content-type" CONTENT="text/html; CHARSET=utf-8">	<!--한글 인코딩-->
+<html>	<!--HTML의 시작-->
+	<head>	<!--머리말 시작-->
+		<title>제목줄입니다</title>	<!--제목을 쓸 수 있음-->
+	</head>	<!--머리말 끝-->
+	<body>	<!--본문에 해당하는 부분 시작-->
+		<from method=post name="fm">
+		<table width=650 border="1" cellspacing=0 cellpadding="5">	<!--테이블 생성, 두께 1, 셀간의 간격0, 셀과 글자 간격 5 -->
+            <tr>    <!--1행-->
+                <td><b>번호</b></td>    <!--1열, 번호-->
+                <td>    <!--2열-->
+                    <!--명칭은 id로 크기는 70, 최대 글자수 70, 기본값 1, 내용변경 가능한 텍스트-->
+                    <input type=text name=id size=70 maxlength=70 value=1 readonly> 
+                </td>    <!--2열 종료-->
+            </tr>	<!--1행 종료-->
+            <tr>    <!--2행-->
+                <td><b>성별</b></td>   <!--1열, 성별-->
+                <td>    <!--2열-->
+                    <select name="sex"> <!--select는 선택할 수 있는 목록을 만들 때 사용-->
+                        <option value="M" selected>남자</option>    <!--목록1번째는 남자, 기본 남자 선택-->
+                        <option value="W">여자</option> <!--목록2번째는 여자-->
+                    </select>   <!--select 종료-->
+                </td>    <!--2열 종료-->
+            </tr> 	<!--2행 종료-->  
+            <tr>    <!--3행-->
+                <td><b>성명</b></td>   <!--1열, 성명-->
+                <td>    <!--2열-->
+                    <!--명칭은 name로 크기는 70, 최대 글자수 70, 기본값 "레이나", 내용변경 가능한 텍스트-->
+                    <input type=text name=name size=70 maxlength=70 value="레이나">
+                </td>    <!--2열 종료-->
+            </tr>	<!--3행 종료-->
+            <tr>    <!--4행-->
+                <td><b>주소</b></td>   <!--1열, 주소-->
+                <td>    <!--2열-->
+                    <!--명칭은 addr로 크기는 70, 최대 글자수 70, 기본값 "서울시 어딘가 살고 있군", 내용변경 가능한 텍스트-->
+                    <input type=text name=addr size=70 maxlength=70 value="서울시 어딘가 살고 있군">
+                </td>    <!--2열 종료-->
+            </tr>   <!--4행 종료-->       
+            <tr>    <!--5행-->
+                <td><b>전화번호</b></td>   <!--1열, 전화번호-->
+                <td>    <!--2열-->
+                    <input type=text name=tel size=70 maxlength=70 value="">
+                </td>    <!--2열 종료-->
+            </tr>	<!--5행 종료-->
+        </table>
+	</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->

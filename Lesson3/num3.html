@@ -1,0 +1,24 @@
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+        <meta charset="UTF-8">  <!--한글 인코딩-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+	<title>script 사용해보기</title>	<!--제목-->
+
+</head>	<!--머리말 끝-->
+<!--자바스크립트 사용-->
+<script>
+    name = prompt("Enter Name","홍길동");   // 초기값:홍길동
+    if(confirm("Continue ?\nClick Button")==true){  // 경고문구 및 선택
+        answer='true';  // 참인 경우
+    } else{
+        answer='false'; // 거짓인 경우
+    }
+    alert("Name:"+name +"\nAnswer:"+answer);    // 경고문으로 이름과 선택 출력
+    document.write("Your Name is "+name)    // body부분에 내용 쓰기
+</script>
+<body>	<!--본문-->
+
+</body>	<!--본문 끝-->
+</html>	<!--HTML의 끝-->
