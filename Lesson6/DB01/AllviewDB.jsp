@@ -15,15 +15,14 @@
         Class.forName("com.mysql.cj.jdbc.Driver");	// Driver 클래스 로드, 클래스 로더에 의해 클래스 또는 인터페이스가 로드된다
 	    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/kopo09","root","kopoctc");	// db 연결
 	    Statement stmt = conn.createStatement();	//	sql문을 위한 Statement 객체 생성
-        ResultSet rset = stmt.executeQuery("select * from examtable;"); // 모든 학생 정보 가져오기
-    
+        ResultSet rset = stmt.executeQuery("select * from examtable;"); // 모든 학생 정보 가져오기    
 %>
 
 <body>	<!--본문-->
 <h1>조회</h1>   <%--제목--%>
 
 <hr>    <%--구분 선--%>
-<table cellspacing=1 width=600 border=1>    <%--테이블 생성--%>
+<table>    <%--테이블 생성--%>
     <tr>    <%--테이블 헤더--%>
         <th>이름</th>   <%--1열--%>
         <th>학번</th>   <%--2열--%>

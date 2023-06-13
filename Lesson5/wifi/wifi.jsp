@@ -34,7 +34,7 @@
 		    out.println("빈 파일입니다<br>"); // 빈 파일 메시지
 	    } else{ // 빈 파일이 아닌 경우
             int fromPT = 0; // 시작 번호,0으로 초기화
-            int cntPT = 20; // 출력할 개수
+            int cntPT = 10; // 출력할 개수
             try{    // 받은 인자에 대한 try-catch문
                 fromPT=Integer.parseInt(request.getParameter("from"));  // 시작번호 변경
                 cntPT=Integer.parseInt(request.getParameter("cnt"));    // 출력할 개수 변경
@@ -51,7 +51,7 @@
                 totalLine++;    // 개수 증가
             }
             if(cntPT<=0){   // 출력할 개수가 0보다 작거나 같은 경우
-                cntPT = 20; // 디폴트 값으로 20 설정
+                cntPT = 10; // 디폴트 값으로 10 설정
             }
             if(fromPT<0){   // 출력할 번호가 0보다 작거나 같은 경우
                 fromPT = 0; // 첫번째 페이지로 설정
@@ -105,39 +105,61 @@
         int block = 10; // 총 출력할 개수
     
         int maxpage = (int) Math.ceil((double) LineCnt / cntPT);    // 최대 페이지
+        int lastfrom = (maxpage-1)*cntPT;   // 마지막 페이지 from
 
+        int startpage=((current-1)/block)*block+1;  // 출력할 번호의 첫번째 번호
+        int endpage=startpage+block-1;  // 출력할 번호의 끝
+        int maxstartpage=(maxpage-1)/block*block+1; // 마지막 페이지가 있는 block의 시작 위치
 
-        // 왼쪽(<<)의 from 구하기
+        // 왼쪽(<)의 from 구하기
         int left=0; // 왼쪽의 초기값은 0
         if(current>block){  // 현재페이지가 앞부분이 아닌 경우
-                left = ((((current-1)/block)-1)*block)*cntPT;   // (<<)시 이동할 페이지의 from 구하기
+                left = ((((current-1)/block)-1)*block)*cntPT;   // (<)시 이동할 페이지의 from 구하기
         }
 
-        // 오른쪽(>>)의 from 구하기
-        int right=(((current-1)/block)+1)*block*cntPT;  // (>>)시 이동할 페이지의 from 구하기
+        // 오른쪽(>)의 from 구하기
+        int right=(((current-1)/block)+1)*block*cntPT;  // (>)시 이동할 페이지의 from 구하기
         if((maxpage-1)*cntPT < right){  // 만약 최대페이지 시의 from를 초과한 경우
-                right = (maxpage-1)*cntPT;  // (>>)는 최대페이지 시의 from으로 변경
+                right = (maxpage-1)*cntPT;  // (>)는 최대페이지 시의 from으로 변경
         }    
     %>   
-
-    <a href="wifi.jsp?from=<%=left%>&cnt=<%=cntPT%>">&lt;&lt;</a>   <%--이전(<<)--%>
-
     <%
-        int pagenum=((current-1)/block)*block;  // 출력할 번호(현재는 출력할 번호의 첫번째 값)
-        int endpage=pagenum+block-1;  // 출력할 번호의 끝
-        
-        while(pagenum<=endpage){    // 결과적으로 block수 만큼 반복
-            if(pagenum>=maxpage) break; // 최대페이지를 넘긴 경우 반복문 종료
-            int pagefrom=pagenum*cntPT; // 해당 페이지의 from값
-            pagenum++;  // 페이지 번호 증가, 출력할 번호가 1부터 10인 경우, pagenum는 0부터 9이다
-                    // 예를 들어 from값을 구할때는 pagenum는 0으므로 from=0이고 그 후 pagenum(현재페이지)는 1이 된다.
+        if(current>block){  // 맨앞 페이지인 경우
     %>
-        <a href="wifi.jsp?from=<%=pagefrom%>&cnt=<%=cntPT%>"><%=pagenum%></a>   <%--페이지 번호와 그에 해당하는 값들을 인자로 하이퍼링크--%>
-    <%  } %>    <%--반복문 종료--%>
+    <a href="wifi.jsp?from=0&cnt=<%=cntPT%>">&lt;&lt;</a>   <%--첫페이지(<<)--%>
+    <%
+        }
+    %>
+    <%
+        if(current>block){   // 맨앞 페이지인 경우
+    %>
+    <a href="wifi.jsp?from=<%=left%>&cnt=<%=cntPT%>">&lt;</a>   <%--이전(<)--%>
 
-    <a href="wifi.jsp?from=<%=right%>&cnt=<%=cntPT%>">&gt;&gt;</a>   <%--다음(>>)--%>
-
-    </div>  <%--안쪽 공간 종료--%>
+    <%  
+        }      
+        for(int pagenum=startpage;pagenum<=endpage;pagenum++){  // 출력해야된 페이지 수만큼
+            if(pagenum>maxpage) break; // 최대페이지를 넘긴 경우 반복문 종료
+            int pagefrom=(pagenum-1)*cntPT; // 해당 페이지의 from값
+            if(current==pagenum){   // 현재페이지이면
+    %>
+                <a href="wifi.jsp?from=<%=pagefrom%>&cnt=<%=cntPT%>" style="color:red; font-weight: bold;"><%=pagenum%></a>   <%--변경된 색깔의 페이지 번호와 그에 해당하는 값들을 인자로 하이퍼링크--%>
+    <%      
+            } else {    // 그 외의 페이지인 경우
+    %>            
+                <a href="wifi.jsp?from=<%=pagefrom%>&cnt=<%=cntPT%>"><%=pagenum%></a>   <%--페이지 번호와 그에 해당하는 값들을 인자로 하이퍼링크--%>
+    <%      
+            }   //if-else문 종료
+        }   //반복문 종료
+        if(maxstartpage>current){    // 맨뒤 페이지인 경우
+    %>
+    <a href="wifi.jsp?from=<%=right%>&cnt=<%=cntPT%>">&gt;</a>   <%--다음(>)--%>
+    <%  }
+        if(maxstartpage>current){    // 맨뒤 페이지인 경우
+    %>
+    <a href="wifi.jsp?from=<%=lastfrom%>&cnt=<%=cntPT%>">&gt;&gt;</a>   <%--마지막페이지(>>)--%>
+    <%  }
+    %>
+    </div>  <%--안쪽 공간 종료--%>    
     </div>  <%--바깥쪽 공간 종료--%>
     <%
         }   // else문 종료
@@ -147,6 +169,5 @@
         br.close(); // 파일 닫기
     } 
     %>
-
 </body>	<!--본문 끝-->
 </html>	<!--HTML의 끝-->

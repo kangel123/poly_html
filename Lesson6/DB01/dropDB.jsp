@@ -11,7 +11,6 @@
     <link type = "text/css" rel="stylesheet" href="./main1.css">  <!--css파일을 불러옴-->
 </head>	<!--머리말 끝-->
 
-
 <body>	<!--본문-->
 <% 
     try{
@@ -28,6 +27,5 @@
         out.println("에러 : "+e);   // 에러 출력
     }
 %>
-    </tbody>
 </body>	<!--본문 끝-->
 </html>	<!--HTML의 끝-->

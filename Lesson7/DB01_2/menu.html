@@ -1,0 +1,34 @@
+<!--메뉴창-->
+<!DOCTYPE html> <!--html 형식임을 선언함-->
+
+<html lang="en">    <!--HTML의 시작-->
+<head>	<!--머리말 시작-->
+    <meta charset="UTF-8">  <!--한글 인코딩-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   <!--문자셋 메타 정보-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!--뷰포트 메타 정보-->
+    <link type = "text/css" rel="stylesheet" href="./main1.css">  <!--css파일을 불러옴-->
+</head>	<!--머리말 끝-->
+<body>	<!--본문-->
+    <ul>    <!--순서 없는 목록-->
+        <li onclick="setPreIndex(0)"><a href="./createDB.jsp" target="main"> TBL 생성</a><br></li>   <!--목록1-->
+        <li onclick="setPreIndex(1)"><a href="./dropDB.jsp" target="main"> TBL 삭제</a><br></li>     <!--목록2-->
+        <li onclick="setPreIndex(2)"><a href="./AllsetDB.jsp" target="main"> TBL 값넣기</a><br></li>     <!--목록3-->
+        <li onclick="setPreIndex(3)"><a href="./AllviewDB.jsp" target="main"> TBL 전체조회</a><br></li>  <!--목록4-->  
+        <li onclick="setPreIndex(4)"><a href="./inputForm1.html" target="main"> 추가</a><br></li>  <!--추가, 목록5-->  
+        <li onclick="setPreIndex(5)"><a href="./inputForm2.html" target="main"> 정정/삭제</a><br></li>  <!--추가, 목록6-->  
+    </ul>   <!--ul 끝-->
+</body>	<!--본문 끝-->
+<script>
+var preIndex = 0;   // 이전 목록
+
+function setPreIndex(index) {   // 현재 선택한 목록(이전에 선택한 목록)의 인덱스번호 구하고 폰트 변경하는 함수
+  var previousItem = document.querySelector('li:nth-child(' + (preIndex + 1) + ')');    // 목록 중에 기존의 선택했던 목록을 가져옴
+  previousItem.style.fontWeight = 'normal'; // 기존의 선택했던 목록의 폰트를 노말로 변경
+
+  var selectedItem = document.querySelector('li:nth-child(' + (index+1) + ')'); // 이번에 선택된 목록을 가져옴
+  selectedItem.style.fontWeight = 'bold';   // 기존의 선택했던 목록의 폰트를 볼드체로 변경
+
+  preIndex = index; // 현재 목록을 이전 목록으로 변경
+}
+</script>
+</html>	<!--HTML의 끝-->
